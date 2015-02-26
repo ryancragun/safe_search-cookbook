@@ -2,9 +2,8 @@
 # Cookbook Name:: safe_search
 # Recipe:: default
 #
-# Copyright 2015, YOUR_COMPANY_NAME
+# Copyright 2015, Chef Software
 #
-# All rights reserved - Do Not Redistribute
 
 safe_search(:node,
             '*:*',

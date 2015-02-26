@@ -47,7 +47,8 @@ class SafeSearch
         merged['total'] = merged['rows'].length
         merged['start'] = 0
         merged
-      elsif current['rows'].length < (cached['rows'].length * (threshold / 100))
+      elsif current['rows'].length <
+            (cached['rows'].length * (threshold.to_f / 100.to_f))
         cached
       else
         current
@@ -67,18 +68,16 @@ class SafeSearch
       query_args, handler_args = SafeSearch.parse_args(hashify_args(*args))
 
       rest_response = call_rest_service(type, query: query, **query_args)
-
       safe_response = SafeSearch.search(type, query, query_args)
-
-      SafeSearch.update_cache(type, query, query_args, rest_response)
-
       response = SafeSearch.handle_results(rest_response,
                                            safe_response,
                                            handler_args)
+      SafeSearch.update_cache(type, query, query_args, rest_response)
 
       if block
         response['rows'].each { |row| block.call(row) if row }
-        unless (response['start'] + response['rows'].length) >= response['total']
+        unless (response['start'] + response['rows'].length) >=
+               response['total']
           query_args[:start] = response['start'] + (query_args[:rows] || 0)
           search(type, query, query_args, &block)
         end
