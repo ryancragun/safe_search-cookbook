@@ -5,7 +5,7 @@ The function is backwards compatible with the standard `search`, however, it
 keeps a local cache of all searches.  This functionality is particularly useful
 in the case of moving nodes to a new Chef Cluster.  When the node is moved it's
 unlikely that the search index on the new cluster has been completely warmed,
-thus any searches the node makes will likely be invalid.  With safe_search
+thus any searches the node makes will likely be invalid.  With `safe_search`
 the client can choose to use the old cached results, current results, or a merged
 set of the current and cached results.
 
