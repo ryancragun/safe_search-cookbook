@@ -1,0 +1,8 @@
+{
+  "id": "fe1",
+  "run_list": ["role[frontend]"],
+  "automatic": {
+    "ipaddress": "10.0.0.76",
+    "roles": ["frontend"]
+  }
+}

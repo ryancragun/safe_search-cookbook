@@ -1,0 +1,7 @@
+name             'safe-search'
+maintainer       'Ryan Cragun'
+maintainer_email 'ryan@chef.io'
+license          'Apache 2.0'
+description      'Installs/Configures safe-search'
+long_description 'Installs/Configures safe-search'
+version          '0.1.0'
