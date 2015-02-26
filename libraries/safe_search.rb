@@ -33,13 +33,9 @@ class SafeSearch
     attr_reader :current, :cached, :threshold, :merge
 
     def initialize(current, cached, opts = { threshold: 90, merge: false })
-      #opts = { threshold: 90, merge: false }.merge(opts)
       @current = current
       @cached = cached
       # if somebody uses a crazy threshold then default back to 90
-      Chef::Log.error("current lenth #{current['rows'].length}" +
-                      "cached length #{cached['rows'].length}" +
-                      "opts #{opts.inspect}")
       @threshold = (0..100).include?(opts[:threshold]) ? opts[:threshold] : 90
       @merge = opts[:merge]
     end
