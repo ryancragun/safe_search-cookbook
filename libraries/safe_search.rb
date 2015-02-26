@@ -105,7 +105,7 @@ class SafeSearch
     end
 
     def select(index)
-      read_cache[index]
+      read_cache[index] || empty_cache
     rescue
       # There's nothing in the cache so return an empty set
       empty_cache
